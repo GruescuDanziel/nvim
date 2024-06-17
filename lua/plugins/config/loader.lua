@@ -1,0 +1,8 @@
+require("plugins.config.telescope")
+require("plugins.config.nvim-tree")
+require("plugins.config.lsp-zero")
+require("plugins.config.startup")
+require("plugins.config.treesitter")
+require("plugins.config.neotest")
+require("plugins.config.finecmd")
+require("plugins.config.zenmode")
