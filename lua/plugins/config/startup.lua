@@ -1,5 +1,5 @@
 vim.g.startup_bookmarks = {
-  ["F"] = '~/Work/Doctari/frontend/develop',
-  ["B"] = '~/Work/Doctari/backend/develop',
+  ["B"] = '~/Doctari/services.BACKEND',
+  ["F"] = '~/Doctari/services.FRONTEND',
   ["N"] = '~/.config/nvim',
 }
