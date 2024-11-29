@@ -1,7 +1,6 @@
-require("lazy").setup({
-  spec = {},
-  checker = { enabled = true },
-})
+local options = require "lazy.plugins"
 
+require("lazy").setup(options)
+require("mason").setup()
 
 
