@@ -1,6 +1,4 @@
-local options = require "lazy.plugins"
+local options = require "plugins.plugins"
 
 require("lazy").setup(options)
 require("mason").setup()
-
-

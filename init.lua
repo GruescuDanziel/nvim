@@ -1,3 +1,5 @@
-require("bootstrap.lazy")
-require("lazy.setup")
-require("keymaps.loader")
+require("bootstrap")
+require("plugins")
+require("settings")
+require("lsp")
+require("keymaps")
