@@ -1,34 +1,4 @@
-local plugins = {
-	{
-		'Bekaboo/dropbar.nvim',
-		dependencies = {
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make'
-		}
-	},
-	{
-		'freddiehaddad/feline.nvim',
-		opts = {}
-	},
-	{
-		"f-person/git-blame.nvim",
-		event = "VeryLazy",
-		opts = {
-			enabled = true,
-			message_template = " <summary> • <date> • <author> • <<sha>>",
-			date_format = "%m-%d-%Y %H:%M:%S",
-			virtual_text_column = 1,  
-		}
-	},
-	{"williamboman/mason.nvim"},
-	{'ms-jpq/chadtree'},
-	{'nvim-telescope/telescope.nvim'},
-	{ 'nvim-lua/plenary.nvim'},
-	{"ThePrimeagen/harpoon"},
-	{"nvim-lua/plenary.nvim" },
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {"neovim/nvim-lspconfig",
+return {"neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -39,7 +9,12 @@ local plugins = {
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+
+
+
+
         "j-hui/fidget.nvim",
+        "hrsh7th/vim-vsnip"
     },
     config = function()
         local cmp = require('cmp')
@@ -50,13 +25,14 @@ local plugins = {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
+
+
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
-                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -109,7 +85,7 @@ local plugins = {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
@@ -134,7 +110,4 @@ local plugins = {
     end
 }
 
-}
 
-
-return plugins
