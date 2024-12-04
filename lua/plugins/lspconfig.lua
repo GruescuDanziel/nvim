@@ -1,34 +1,4 @@
-local plugins = {
-	{
-		'Bekaboo/dropbar.nvim',
-		dependencies = {
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make'
-		}
-	},
-	{
-		'freddiehaddad/feline.nvim',
-		opts = {}
-	},
-	{
-		"f-person/git-blame.nvim",
-		event = "VeryLazy",
-		opts = {
-			enabled = true,
-			message_template = " <summary> • <date> • <author> • <<sha>>",
-			date_format = "%m-%d-%Y %H:%M:%S",
-			virtual_text_column = 1,  
-		}
-	},
-	{"williamboman/mason.nvim"},
-	{'ms-jpq/chadtree'},
-	{'nvim-telescope/telescope.nvim'},
-	{ 'nvim-lua/plenary.nvim'},
-	{"ThePrimeagen/harpoon"},
-	{"nvim-lua/plenary.nvim" },
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {"neovim/nvim-lspconfig",
+return {"neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -40,6 +10,7 @@ local plugins = {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "hrsh7th/vim-vsnip"
     },
     config = function()
         local cmp = require('cmp')
@@ -50,13 +21,14 @@ local plugins = {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
+
+
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
-                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -134,7 +106,4 @@ local plugins = {
     end
 }
 
-}
 
-
-return plugins
