@@ -11,6 +11,6 @@ return {
                 null_ls.builtins.completion.spell,
             },
         })
-        vim.keymap.set("n", "<leader>fd", vim.lsp.buf.format, {})
+        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {desc = "Format File"})
     end,
 }
