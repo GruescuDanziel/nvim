@@ -16,6 +16,8 @@ require("lazy").setup("plugins")
 
 vim.o.termguicolors = true
 
+vim.cmd [[colorscheme solarized]]
+
 vim.cmd [[
 set cursorline
 hi CursorLine gui=underline cterm=underline
@@ -28,6 +30,14 @@ vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
     end
     return orig(err, res, ctx)
 end
+
+
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<M-CR>", ":lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
