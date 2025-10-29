@@ -8,6 +8,8 @@ return {
         vim.keymap.set('n', '<TAB><TAB>', builtin.find_files, { desc = 'Telescope find files' })
         vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-        vim.keymap.set('n', '<C-b>', builtin.lsp_references)
+        vim.keymap.set('n', '<C-b>', builtin.lsp_implementations)
+        vim.keymap.set('n', '<C-t>', builtin.lsp_type_definitions)
+        vim.keymap.set('n', '<C-u>', builtin.lsp_references)
     end
 }

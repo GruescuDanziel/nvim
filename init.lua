@@ -16,8 +16,6 @@ require("lazy").setup("plugins")
 
 vim.o.termguicolors = true
 
-vim.cmd [[colorscheme solarized]]
-
 vim.cmd [[
 set cursorline
 hi CursorLine gui=underline cterm=underline
@@ -31,6 +29,14 @@ vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
     return orig(err, res, ctx)
 end
 
+require("personal-plugins.plugins.jest-file-runner")
+local jest_picker = require("personal-plugins.plugins.jest-picker")
+
+vim.keymap.set('n', '<leader>R', function() 
+  require('personal-plugins.plugins.project_cli').pick_and_run() 
+end, { desc = "Run Project CLI Script" })
+
+vim.keymap.set("n", "<F9>", jest_picker.pick_and_run_test, { desc = "Pick and run Jest test" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
