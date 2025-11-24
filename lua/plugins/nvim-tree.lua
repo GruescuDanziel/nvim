@@ -1,12 +1,15 @@
 return {
 
     "nvim-tree/nvim-tree.lua",
-
+    lazy = false,
     config = function ()
-        require("nvim-tree").setup()
-        local nvimTreeApi = require "nvim-tree.api"
-        vim.keymap.set("n", "<leader><leader>", nvimTreeApi.tree.toggle)
+        require('nvim-tree').setup()
+    end,
+    keys = {
 
-    end
+        {"<C-e>", "<CMD>NvimTreeToggle<CR>"}
+    }
+
+
 
 }
